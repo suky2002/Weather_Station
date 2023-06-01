@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div>
+    <canvas id="myChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Function to fetch real-time data from the server
+    function fetchData() {
+        $.ajax({
+            url: "{% url 'real-time-data' %}",
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                // Process the received data and update the chart
+                updateChart(data);
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+            }
+        });
+    }
+
+    // Function to update the chart with new data
+    function updateChart(data) {
+        // Process the data and create the chart dataset
+        // Refer to Chart.js documentation for more details
+        
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: data.labels,
+                datasets: [{
+                    label: 'Real-time Data',
+                    data: data.values,
+                    borderColor: 'blue',
+                    fill: false
+                }]
+            }
+        });
+    }
+
+    // Call the fetchData function at regular intervals
+    setInterval(fetchData, 5000);
+</script>
+{% endblock %}
