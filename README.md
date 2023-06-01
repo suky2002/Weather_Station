@@ -38,16 +38,25 @@ Weather Station
                                   |         +-----------------+
                                   +-------->| Django Admin    |
                                             +-----------------+
-Weather Station: The overall system that collects weather data and sends it to a server for storage and display.
+Weather Station:
+The overall system that collects weather data and sends it to a server for storage and display.
+
 NodeMCU with ESP8266: The microcontroller that controls the system and provides wireless connectivity via Wi-Fi.
+
 Weather Click Sensor: A triple sensor that measures temperature, humidity, and pressure.
+
 LCD Display: An LCD screen that displays the weather data.
+
 Wi-Fi Connection: Provides a wireless connection to the internet via Wi-Fi.
+
 MySQL Database: Stores the weather data received from the NodeMCU with ESP8266.
+
 Django Admin: The administrative interface provided by Django web framework for managing and displaying the weather data stored in the MySQL Database. It allows administrators to access and manipulate the data, perform CRUD operations, and customize the display of weather information.
+
 The NodeMCU with ESP8266 retrieves data from the Weather Click Sensor, which includes temperature, humidity, and pressure readings. This data is then displayed on the LCD Display. The NodeMCU with ESP8266 connects to the internet via Wi-Fi, allowing it to send the weather data to the MySQL Database for storage. The stored weather data can then be accessed and displayed on a web page.
 
 **Hardware Design**
+
 The weather station is composed of the following important components:
 
 An LCD screen with 20 columns and 4 rows;
@@ -60,41 +69,56 @@ The triple sensor from Mikroe is called Weather click and is part of a family of
 The “heart” of this device is the NodeMCU v.1 board with an ESP8266 microprocessor from the RISC family based on the Tensilica Xtensa 32-bit design. It “beats” at a frequency between 80MHz and 160MHz (we can compare it to 8MHz-16MHz for the 8-bit Arduino UNO) and offers much more RAM (32KB instruction, 32KB instruction cache, 80KB user-data, 16 KB ETS system-data) and Flash (4MB). For comparison, the Arduino UNO has 2KB RAM and 32KB Flash. For my application, the most important feature is that this board has wireless connectivity at 2.4GHz on IEEE 802.11 b/g/n Wi-Fi standards. Programming this board can also be done wirelessly (OTA - over the air) without requiring direct connection to a PC, but a power source of 3V-5V (battery) will be required to provide power to it.
 
 **Software Design**
+
 Description of the Application Firmware
+
 The application firmware is developed using the Arduino IDE, which provides support for ESP8266 microcontrollers. It leverages various third-party libraries to enable specific functionalities and streamline the development process.
 
 Development Environment
+
 The code is developed using the Arduino IDE, which supports ESP8266 microcontrollers.
 
 Third-Party Libraries
+
 ESP8266WiFi: This library provides the necessary functions to connect to a Wi-Fi network.
+
 ESP8266HTTPClient: It allows making HTTP requests to send data to the server.
+
 WiFiClient: Provides the functionality to establish a Wi-Fi client connection.
+
 Wire: This library is used for I2C communication between the NodeMCU and the BME280 sensor and LCD display.
+
 Adafruit_BME280: Library for interacting with the BME280 sensor to read temperature, humidity, and pressure.
+
 LiquidCrystal_I2C: Library for controlling the LCD display using the I2C protocol.
+
 Algorithms and Structures
+
 The firmware code implements various algorithms and data structures to ensure efficient data processing and handling.
 
 Sensor Data Reading:
 
 The firmware utilizes algorithms provided by the Adafruit_BME280 library to read temperature, humidity, and pressure values from the BME280 sensor.
 These algorithms employ specific calculations and calibration techniques to obtain accurate sensor readings.
+
 Data Transmission:
 
 To send the collected sensor data to the server, the firmware implements an algorithm using the ESP8266HTTPClient library.
 This algorithm establishes an HTTP connection and crafts the necessary POST request to transmit the data.
 It ensures that the data is properly formatted and sent to the server for further processing.
+
 Communication Protocols:
 
 The firmware uses the Wire library to facilitate I2C communication between the NodeMCU and the BME280 sensor and LCD display.
 I2C (Inter-Integrated Circuit) is a widely used protocol for communication between integrated circuits.
 The code leverages the I2C protocol to exchange data and commands between the microcontroller and these peripheral devices.
+
 Database Integration:
 
 Although the specifics of the database implementation (MySQL) are handled outside the firmware code, certain data structuring and organization are considered.
 The firmware structures the data received from the sensor into suitable data structures (e.g., arrays, objects) to ensure efficient storage and retrieval in the database.
 Algorithms may be implemented to handle data formatting, conversion, and encoding as required by the database.
+
 Integration with Django and MySQL
 In addition to the firmware code, the project also involves integration with MySQL and Django for data storage and web application development, respectively.
 
@@ -109,6 +133,7 @@ The integration between the firmware code, MySQL, and Django allows for real-tim
 By combining the firmware code with Django and MySQL, I could create a comprehensive system that collects, stores, and presents sensor data, providing valuable insights and facilitating further analysis.
 
 **Results Achieved**
+
 1. Sensor Data Acquisition:
 
 'Result:' Successful acquisition of temperature, humidity, pressure, and altitude data.
