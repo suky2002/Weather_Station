@@ -1,4 +1,5 @@
-Introduction
+**Introduction**
+
 My project is a weather station that gathers information about temperature, humidity, and pressure, and then sends it to a server in a MySQL database. From that database, a dedicated web page can display the data for the station.
 
 The idea for this project started with my interest in weather monitoring and the desire to create a system that could gather and display weather data in a convenient way. I believe that this project could be useful for others who are interested in weather monitoring, as well as for myself to keep track of weather conditions in my area.
@@ -7,7 +8,7 @@ The purpose of the project is to provide real-time weather information that is a
 
 I believe that the project is useful for others because it provides accurate and real-time weather information that can help people plan their day. It can also be useful for farmers, gardeners, and other people who rely on weather conditions for their livelihoods. For me, the project is an opportunity to learn about sensors, microcontrollers, and web development while creating something that can benefit others and myself at the same time.
 
-General Description
+**General Description**
 +————————–+
 
 Weather Station
@@ -46,7 +47,7 @@ MySQL Database: Stores the weather data received from the NodeMCU with ESP8266.
 Django Admin: The administrative interface provided by Django web framework for managing and displaying the weather data stored in the MySQL Database. It allows administrators to access and manipulate the data, perform CRUD operations, and customize the display of weather information.
 The NodeMCU with ESP8266 retrieves data from the Weather Click Sensor, which includes temperature, humidity, and pressure readings. This data is then displayed on the LCD Display. The NodeMCU with ESP8266 connects to the internet via Wi-Fi, allowing it to send the weather data to the MySQL Database for storage. The stored weather data can then be accessed and displayed on a web page.
 
-Hardware Design
+**Hardware Design**
 The weather station is composed of the following important components:
 
 An LCD screen with 20 columns and 4 rows;
@@ -57,7 +58,8 @@ A NodeMCU v.1 board with ESP 8266 processor;
 The LCD screen can display 40 characters on 4 lines. To send the information that needs to be displayed, I will use the I2c protocol, which requires only 2 signal wires: SDA (for data) and SCL (for clock). Of course, for powering the screen, an additional 2 wires are needed: VCC (from 3V to 5V) and GND.
 The triple sensor from Mikroe is called Weather click and is part of a family of products with a standardized design meant to be placed in the same way in circuits. It includes a Bosch Sensortec BME 280 chip that operates between 1.7V and 3.6V. For communication, we also use the I2c protocol.
 The “heart” of this device is the NodeMCU v.1 board with an ESP8266 microprocessor from the RISC family based on the Tensilica Xtensa 32-bit design. It “beats” at a frequency between 80MHz and 160MHz (we can compare it to 8MHz-16MHz for the 8-bit Arduino UNO) and offers much more RAM (32KB instruction, 32KB instruction cache, 80KB user-data, 16 KB ETS system-data) and Flash (4MB). For comparison, the Arduino UNO has 2KB RAM and 32KB Flash. For my application, the most important feature is that this board has wireless connectivity at 2.4GHz on IEEE 802.11 b/g/n Wi-Fi standards. Programming this board can also be done wirelessly (OTA - over the air) without requiring direct connection to a PC, but a power source of 3V-5V (battery) will be required to provide power to it.
-Software Design
+
+**Software Design**
 Description of the Application Firmware
 The application firmware is developed using the Arduino IDE, which provides support for ESP8266 microcontrollers. It leverages various third-party libraries to enable specific functionalities and streamline the development process.
 
@@ -106,7 +108,7 @@ The integration between the firmware code, MySQL, and Django allows for real-tim
 
 By combining the firmware code with Django and MySQL, I could create a comprehensive system that collects, stores, and presents sensor data, providing valuable insights and facilitating further analysis.
 
-Results Achieved
+**Results Achieved**
 1. Sensor Data Acquisition:
 
 'Result:' Successful acquisition of temperature, humidity, pressure, and altitude data.
@@ -139,7 +141,8 @@ Results Achieved
 
 
 
-Conclusion
+**Conclusion**
+
 In conclusion, the weather station project successfully utilized the NodeMCU ESP8266 microcontroller along with various components such as the BME280 sensor, LCD display, and Wi-Fi module to create a functional and efficient weather monitoring system.
 
 The NodeMCU acted as the central control unit, collecting temperature, humidity, pressure, and altitude data from the BME280 sensor. The acquired data was then displayed on the LCD screen, providing real-time weather information to users.
